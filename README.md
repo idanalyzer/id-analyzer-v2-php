@@ -15,7 +15,7 @@ Alternatively, download this package and manually require the PHP files under **
 ## Scanner
 This category supports all scanning-related functions specifically used to initiate a new identity document scan & ID face verification transaction by uploading based64-encoded images.
 ![Sample ID](https://www.idanalyzer.com/img/sampleid1.jpg)
-```injectablephp
+```php
 <?php
 
 require("src/Scanner.php");
@@ -44,7 +44,7 @@ try {
 
 ## Biometric
 There are two primary functions within this class. The first one is verifyFace and the second is verifyLiveness.
-```injectablephp
+```php
 <?php
 
 require("src/Biometric.php");
@@ -72,7 +72,7 @@ try {
 
 ## Contract
 All contract-related feature sets are available in Contract class. There are three primary functions in this class.
-```injectablephp
+```php
 <?php
 
 require("src/Contract.php");
@@ -105,7 +105,7 @@ try {
 ## Docupass
 This category supports all rapid user verification based on the ids and the face images provided.
 ![DocuPass Screen](https://www.idanalyzer.com/img/docupassliveflow.jpg)
-```injectablephp
+```php
 <?php
 require("src/Docupass.php");
 require("src/APIException.php");
@@ -139,7 +139,7 @@ try {
 
 ## Transaction
 This function enables the developer to retrieve a single transaction record based on the provided transactionId.
-```injectablephp
+```php
 <?php
 
 require("src/Transaction.php");
