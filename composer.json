@@ -6,7 +6,9 @@
   "homepage": "https://www.idanalyzer.com",
   "license": "MIT",
   "require": {
-    "php": ">=5.4"
+    "php": ">=7.4",
+    "guzzlehttp/guzzle": "7.0",
+    "ext-json": "*"
   },
   "authors": [
     {
@@ -16,9 +18,10 @@
       "role": "Developer"
     }
   ],
+  "version": "1.0.2",
   "minimum-stability": "dev",
   "autoload": {
-    "psr-4": {"IDAnalyzer\\": "src/"}
+    "psr-4": {"IDAnalyzer2\\": "src/"}
   }
 
 }

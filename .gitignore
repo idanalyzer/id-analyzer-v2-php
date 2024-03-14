@@ -1,3 +1,4 @@
-
+vendor
 phpDocumentor.phar
 generate_doc.bat
+composer.lock

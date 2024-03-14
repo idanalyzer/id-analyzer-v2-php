@@ -1,4 +1,5 @@
 <?php
+
 namespace IDAnalyzer2;
 use Exception;
-class APIException extends Exception {}
+class SDKException extends Exception {}
