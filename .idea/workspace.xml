@@ -4,21 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d04cf411-b7a0-450f-a29d-6986479aa64b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Api/Scanner/StandardScan.php" afterDir="false" />
+    <list default="true" id="4fb2f944-f3b1-43e8-bf4a-0449d27ca216" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/id-analyzer-v2-php.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/id-analyzer-v2-php.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/APIException.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Biometric.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Common.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Common.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Contract.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Docupass.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Profile.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Scanner.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Transaction.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/id-analyzer-v2-php.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/templateLanguages.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/Biometric/FaceVerification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/Biometric/FaceVerification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/Docupass/RmDocupass.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/Docupass/RmDocupass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/Profile/CreateProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/Profile/CreateProfile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/Scanner/QuickScan.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/Scanner/QuickScan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/Transaction/EdTransaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/Transaction/EdTransaction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/Transaction/OutputFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/Transaction/OutputFile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ApiBase.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApiBase.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,48 +29,29 @@
   </component>
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable path="composer" />
-    </execution>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Copy of PHP Class" />
-        <option value="PHP ApiBase" />
-      </list>
-    </option>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\laragon\bin\php\php-7.4.19-Win32-vc15-x64\php.exe">
     <include_path>
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
-      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
     </include_path>
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 2
-}</component>
-  <component name="ProjectId" id="2dcjmlOO4otZSkeUpO3YdizbnDc" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2dr5UNmLYmVfwngvvKEo1Iyfk0X" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -76,6 +59,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -95,30 +79,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d04cf411-b7a0-450f-a29d-6986479aa64b" name="Changes" comment="" />
-      <created>1710314424805</created>
+      <changelist id="4fb2f944-f3b1-43e8-bf4a-0449d27ca216" name="Changes" comment="" />
+      <created>1710753371368</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1710314424805</updated>
-      <workItem from="1710314427555" duration="14810000" />
-      <workItem from="1710382778559" duration="1469000" />
-      <workItem from="1710384265245" duration="19171000" />
+      <updated>1710753371368</updated>
+      <workItem from="1710753372593" duration="18404000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

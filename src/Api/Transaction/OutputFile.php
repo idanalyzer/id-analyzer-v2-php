@@ -7,7 +7,7 @@ use IDAnalyzer2\RequestPayload;use IDAnalyzer2\SDKException;
 
 class OutputFile extends ApiBase
 {
-    public string $uri = "/fillevault/{fileName}";
+    public string $uri = "/filevault/{fileName}";
     public string $method = "GET";
     public bool $isFile = true;
 

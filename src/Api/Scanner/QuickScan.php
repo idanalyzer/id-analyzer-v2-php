@@ -14,7 +14,7 @@ class QuickScan extends ApiBase {
         $this->initFields([
              RequestPayload::Field("document", "string", true, null, "Base64-encoded Document Image"),
              RequestPayload::Field("documentBack", "string", false, null, "Base64-encoded Document(Back) Image"),
-             RequestPayload::Field("saveFile", "string", false, null, "Cache uploaded image(s) for 24 hours and obtain a cache hash for each image, the reference hash can be used to start standard scan transaction without re-uploading the file."),
+             RequestPayload::Field("saveFile", "boolean", false, null, "Cache uploaded image(s) for 24 hours and obtain a cache hash for each image, the reference hash can be used to start standard scan transaction without re-uploading the file."),
         ]);
     }
 }
