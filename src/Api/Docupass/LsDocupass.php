@@ -12,18 +12,18 @@ class LsDocupass extends ApiBase {
 
     function __construct() {
         $this->initFields([
-            RequestPayload::QueryParam("sort", "string", false, null, "Sort by id or completedat"),
-            RequestPayload::QueryParam("order", "string", false, null, "-1=Newest First (default); 1=Oldest First"),
-            RequestPayload::QueryParam("offset", "string", false, null, "Index of the starting entry"),
-            RequestPayload::QueryParam("limit", "string", false, null, "Number of items returned per call"),
-            RequestPayload::QueryParam("reference", "string", false, null, "Filter by reference"),
-            RequestPayload::QueryParam("customData", "string", false, null, "Filter by custom data"),
-            RequestPayload::QueryParam("profileId", "string", false, null, "Filter by profile ID"),
-            RequestPayload::QueryParam("decision", "string", false, null, "Filter by decision"),
-            RequestPayload::QueryParam("createdAtMin", "string", false, null, "Time range filter"),
-            RequestPayload::QueryParam("createdAtMax", "string", false, null, "Time range filter"),
-            RequestPayload::QueryParam("completedAtMin", "string", false, null, "Time range filter"),
-            RequestPayload::QueryParam("completedAtMax", "string", false, null, "Time range filter")
+            self::QueryParam("sort", "string", false, null, "Sort by id or completedat"),
+            self::QueryParam("order", "string", false, null, "-1=Newest First (default); 1=Oldest First"),
+            self::QueryParam("offset", "string", false, null, "Index of the starting entry"),
+            self::QueryParam("limit", "string", false, null, "Number of items returned per call"),
+            self::QueryParam("reference", "string", false, null, "Filter by reference"),
+            self::QueryParam("customData", "string", false, null, "Filter by custom data"),
+            self::QueryParam("profileId", "string", false, null, "Filter by profile ID"),
+            self::QueryParam("decision", "string", false, null, "Filter by decision"),
+            self::QueryParam("createdAtMin", "string", false, null, "Time range filter"),
+            self::QueryParam("createdAtMax", "string", false, null, "Time range filter"),
+            self::QueryParam("completedAtMin", "string", false, null, "Time range filter"),
+            self::QueryParam("completedAtMax", "string", false, null, "Time range filter")
         ]);
     }
 }

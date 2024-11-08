@@ -13,8 +13,8 @@ class EdTransaction extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::Field('decision', 'string', true, null, 'reject, review, accept'),
-            RequestPayload::RouteParam('transactionId', 'string', true, null, 'Transaction ID'),
+            self::Field('decision', 'string', true, null, 'reject, review, accept'),
+            self::RouteParam('transactionId', 'string', true, null, 'Transaction ID'),
         ]);
     }
 }

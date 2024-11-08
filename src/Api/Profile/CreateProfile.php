@@ -14,25 +14,25 @@ class CreateProfile extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::Field('name', 'string', true, "My Profile", 'Profile Name'),
-            RequestPayload::Field('canvasSize', 'number', true, 1500, 'Canvas Size in pixels, input image larger than this size will be scaled down before further processing, reduced image size will improve inference time but reduce result accuracy.'),
-            RequestPayload::Field('orientationCorrection', 'boolean', true, true, 'Correct image orientation for rotated images'),
-            RequestPayload::Field('objectDetection', 'boolean', true, true, 'Enable to automatically detect and return the locations of signature, document and face.'),
-            RequestPayload::Field('AAMVABarcodeParsing', 'boolean', true, true, 'Enable to parse AAMVA barcode for US/CA ID/DL. Disable this to improve performance if you are not planning on scanning ID/DL from US or Canada.'),
-            RequestPayload::Field('saveResult', 'boolean', true, true, 'Whether transaction results should be saved'),
-            RequestPayload::Field('saveImage', 'boolean', true, true, 'If saveResult is enabled, whether output images should also be saved on cloud.'),
-            RequestPayload::Field('outputImage', 'boolean', true, true, 'Whether to return output image as part of API response'),
-            RequestPayload::Field('outputType', 'string', true, 'url', 'Output processed image in either "base64" or "url".'),
-            RequestPayload::Field('crop', 'boolean', true, false, 'Enable to automatically remove any irrelevant pixels from the uploaded image before saving and outputting the final image.'),
-            RequestPayload::Field('advancedCrop', 'boolean', true, true, 'Enable to use advanced deskew feature on documents that are sheared.'),
-            RequestPayload::Field('outputSize', 'number', true, 1000, 'Maximum pixel width/height for output & saved image.'),
-            RequestPayload::Field('inferFullName', 'boolean', true, true, 'Generate a full name field using parsed first name, middle name and last name.'),
-            RequestPayload::Field('splitFirstName', 'boolean', true, false, 'If first name contains more than one word, move second word onwards into middle name field.'),
-            RequestPayload::Field('transactionAuditReport', 'boolean', true, false, 'Enable to generate a detailed PDF audit report for every transaction.'),
-            RequestPayload::Field('timezone', 'string', true, "UTC", 'Set timezone for audit reports. If left blank, UTC will be used. Refer to https://en.wikipedia.org/wiki/List_of_tz_database_time_zones TZ database name list.'),
-            RequestPayload::Field('obscure', 'array', true, [], 'A list of data fields key to be redacted before transaction storage, these fields will also be blurred from output & saved image.'),
-            RequestPayload::Field('webhook', 'string', true, '', 'Enter a server URL to listen for Docupass verification and scan transaction results'),
-            RequestPayload::Field('thresholds', 'object', true, [
+            self::Field('name', 'string', true, "My Profile", 'Profile Name'),
+            self::Field('canvasSize', 'number', true, 1500, 'Canvas Size in pixels, input image larger than this size will be scaled down before further processing, reduced image size will improve inference time but reduce result accuracy.'),
+            self::Field('orientationCorrection', 'boolean', true, true, 'Correct image orientation for rotated images'),
+            self::Field('objectDetection', 'boolean', true, true, 'Enable to automatically detect and return the locations of signature, document and face.'),
+            self::Field('AAMVABarcodeParsing', 'boolean', true, true, 'Enable to parse AAMVA barcode for US/CA ID/DL. Disable this to improve performance if you are not planning on scanning ID/DL from US or Canada.'),
+            self::Field('saveResult', 'boolean', true, true, 'Whether transaction results should be saved'),
+            self::Field('saveImage', 'boolean', true, true, 'If saveResult is enabled, whether output images should also be saved on cloud.'),
+            self::Field('outputImage', 'boolean', true, true, 'Whether to return output image as part of API response'),
+            self::Field('outputType', 'string', true, 'url', 'Output processed image in either "base64" or "url".'),
+            self::Field('crop', 'boolean', true, false, 'Enable to automatically remove any irrelevant pixels from the uploaded image before saving and outputting the final image.'),
+            self::Field('advancedCrop', 'boolean', true, true, 'Enable to use advanced deskew feature on documents that are sheared.'),
+            self::Field('outputSize', 'number', true, 1000, 'Maximum pixel width/height for output & saved image.'),
+            self::Field('inferFullName', 'boolean', true, true, 'Generate a full name field using parsed first name, middle name and last name.'),
+            self::Field('splitFirstName', 'boolean', true, false, 'If first name contains more than one word, move second word onwards into middle name field.'),
+            self::Field('transactionAuditReport', 'boolean', true, false, 'Enable to generate a detailed PDF audit report for every transaction.'),
+            self::Field('timezone', 'string', true, "UTC", 'Set timezone for audit reports. If left blank, UTC will be used. Refer to https://en.wikipedia.org/wiki/List_of_tz_database_time_zones TZ database name list.'),
+            self::Field('obscure', 'array', true, [], 'A list of data fields key to be redacted before transaction storage, these fields will also be blurred from output & saved image.'),
+            self::Field('webhook', 'string', true, '', 'Enter a server URL to listen for Docupass verification and scan transaction results'),
+            self::Field('thresholds', 'object', true, [
                 'face' => 0.5,
                 'nameDualSide' => 0.5,
                 'nameVerification' => 0.7,
@@ -53,11 +53,11 @@ class CreateProfile extends ApiBase
                 'glareDetect' => 0.45,
                 'blackWhite' => 0.98,
             ], 'Control the threshold of Document Validation Components, numbers should be float between 0 to 1.'),
-            RequestPayload::Field('decisionTrigger', 'object', true, [
+            self::Field('decisionTrigger', 'object', true, [
                 'review' => 1,
                 'reject' => 1,
             ], 'For every failed validation'),
-            RequestPayload::Field('decisions', 'object', true, [
+            self::Field('decisions', 'object', true, [
                 'UNRECOGNIZED_DOCUMENT' => [
                     'enabled' => true,
                     'review' => -1,
@@ -503,7 +503,7 @@ class CreateProfile extends ApiBase
                     'weight' => 1,
                 ],
             ], 'Enable/Disable and fine-tune how each Document Validation Component affects the final decision.'),
-            RequestPayload::Field('docupass', 'object', true, [
+            self::Field('docupass', 'object', true, [
                 'companyName' => '',
                 'welcomeMessage' => '',
                 'logoURL' => '',
@@ -533,7 +533,7 @@ class CreateProfile extends ApiBase
                 'qrMargin' => 8,
                 'docupassAuditReport' => false,
             ], 'Docupass express identity verification / e-signature module settings'),
-            RequestPayload::Field('acceptedDocuments', 'object', true, [
+            self::Field('acceptedDocuments', 'object', true, [
                 'documentType' => '',
                 'documentCountry' => '',
                 'documentState' => '',

@@ -14,11 +14,11 @@ class CreateTemplate extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::Field('name', 'string', false, null, 'Name of template'),
-            RequestPayload::Field('content', 'string', false, null, 'HTML content'),
-            RequestPayload::Field('orientation', 'string', false, null, '0=Portrait(Default) 1=Landscape'),
-            RequestPayload::Field('font', 'string', false, null, 'Google font name'),
-            RequestPayload::Field('timezone', 'string', false, null, 'TZ Database Name'),
+            self::Field('name', 'string', false, null, 'Name of template'),
+            self::Field('content', 'string', false, null, 'HTML content'),
+            self::Field('orientation', 'string', false, null, '0=Portrait(Default) 1=Landscape'),
+            self::Field('font', 'string', false, null, 'Google font name'),
+            self::Field('timezone', 'string', false, null, 'TZ Database Name'),
         ]);
     }
 }

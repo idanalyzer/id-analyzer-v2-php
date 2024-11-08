@@ -15,12 +15,12 @@ class EdTemplate extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::Field('name', 'string', false, null, ''),
-            RequestPayload::Field('content', 'string', false, null, ''),
-            RequestPayload::Field('orientation', 'string', false, null, ''),
-            RequestPayload::Field('font', 'string', false, null, ''),
-            RequestPayload::Field('timezone', 'string', false, null, ''),
-            RequestPayload::RouteParam('templateId', 'string', true, null, 'Template ID'),
+            self::Field('name', 'string', false, null, ''),
+            self::Field('content', 'string', false, null, ''),
+            self::Field('orientation', 'string', false, null, ''),
+            self::Field('font', 'string', false, null, ''),
+            self::Field('timezone', 'string', false, null, ''),
+            self::RouteParam('templateId', 'string', true, null, 'Template ID'),
         ]);
     }
 }
