@@ -13,7 +13,7 @@ class RmTransaction extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::RouteParam("transactionId", "string", true, null, "Transaction ID")
+            self::RouteParam("transactionId", "string", true, null, "Transaction ID")
         ]);
     }
 }

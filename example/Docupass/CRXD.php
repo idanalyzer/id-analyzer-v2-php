@@ -8,7 +8,7 @@ use \IDAnalyzer2\Api\Docupass\LsDocupass;
 use \IDAnalyzer2\Api\Docupass\RmDocupass;
 
 try {
-    $client = new Client("6EsqKOITW5Ge3cJYTGIGGNJZ3VmTEc64");
+    $client = new Client("hzq5EeZYZccV25p47oKz0LQQBst9PAgv");
 
     $cDocupass        = new CreateDocupass();
     $cDocupass->profile = 'security_medium';

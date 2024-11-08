@@ -14,7 +14,7 @@ class OutputImage extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::RouteParam('imageToken', 'string', true, null, 'Image token retrieved from transaction image response'),
+            self::RouteParam('imageToken', 'string', true, null, 'Image token retrieved from transaction image response'),
         ]);
     }
 }

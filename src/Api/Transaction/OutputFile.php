@@ -15,7 +15,7 @@ class OutputFile extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::RouteParam('fileName', 'string', true, null, 'File name returned by transaction API'),
+            self::RouteParam('fileName', 'string', true, null, 'File name returned by transaction API'),
         ]);
     }
 }

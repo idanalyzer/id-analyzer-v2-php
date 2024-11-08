@@ -14,7 +14,7 @@ class TemplateDetail extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::RouteParam("templateId", "string", true, null, "Template ID"),
+            self::RouteParam("templateId", "string", true, null, "Template ID"),
         ]);
     }
 }

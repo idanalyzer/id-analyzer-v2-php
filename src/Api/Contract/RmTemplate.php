@@ -13,7 +13,7 @@ class RmTemplate extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::RouteParam("templateId", "string", true, null, "Template ID to delete"),
+            self::RouteParam("templateId", "string", true, null, "Template ID to delete"),
         ]);
     }
 }

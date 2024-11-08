@@ -12,7 +12,7 @@ class RmDocupass extends ApiBase {
     
     function __construct() {
         $this->initFields([
-            RequestPayload::RouteParam("reference", "string", true, null, "Docupass reference ID"),
+            self::RouteParam("reference", "string", true, null, "Docupass reference ID"),
         ]);
     }
 }

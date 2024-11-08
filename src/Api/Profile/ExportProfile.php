@@ -15,7 +15,7 @@ class ExportProfile extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::RouteParam('profileId', 'string', true, null, 'KYC Profile ID'),
+            self::RouteParam('profileId', 'string', true, null, 'KYC Profile ID'),
         ]);
     }
 }

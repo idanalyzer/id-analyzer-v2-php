@@ -13,7 +13,7 @@ class ResendWebhook extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::RouteParam("webhookId", "string", true, null, "Webhook ID"),
+            self::RouteParam("webhookId", "string", true, null, "Webhook ID"),
         ]);
     }
 }

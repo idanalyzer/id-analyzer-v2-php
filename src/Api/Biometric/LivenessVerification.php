@@ -14,11 +14,11 @@ class LivenessVerification extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::Field('face', 'string', false, null, 'Reference Image in base64 or remote URL'),
-            RequestPayload::Field('faceVideo', 'string', false, null, 'Selfie video in base64 or remote URL'),
-            RequestPayload::Field('profile', 'string', true, null, 'Profile ID'),
-            RequestPayload::Field('profileOverride', 'object', false, null, 'Override any particular setting on the existing profile'),
-            RequestPayload::Field('customData', 'string', false, null, 'Any arbitrary string you wish to save with the transaction. e.g Internal customer reference number'),
+            self::Field('face', 'string', false, null, 'Reference Image in base64 or remote URL'),
+            self::Field('faceVideo', 'string', false, null, 'Selfie video in base64 or remote URL'),
+            self::Field('profile', 'string', true, null, 'Profile ID'),
+            self::Field('profileOverride', 'object', false, null, 'Override any particular setting on the existing profile'),
+            self::Field('customData', 'string', false, null, 'Any arbitrary string you wish to save with the transaction. e.g Internal customer reference number'),
         ]);
     }
 }

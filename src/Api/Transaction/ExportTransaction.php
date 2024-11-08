@@ -15,16 +15,16 @@ class ExportTransaction extends ApiBase
     function __construct()
     {
         $this->initFields([
-            RequestPayload::Field('exportType', 'string', false, null, 'Export format, either "csv" or "json".'),
-            RequestPayload::Field('ignoreUnrecognized', 'boolean', false, null, 'Ignore unrecognized documents.'),
-            RequestPayload::Field('ignoreDuplicate', 'boolean', false, null, 'Ignore duplicated entries.'),
-            RequestPayload::Field('transactionId', 'array of strings', false, null, 'List of transactions to export.'),
-            RequestPayload::Field('customData', 'string', false, null, 'If not transaction ID is specified, filter by customData.'),
-            RequestPayload::Field('profileId', 'string', false, null, 'If not transaction ID is specified, filter by profile ID.'),
-            RequestPayload::Field('decision', 'string', false, null, 'If not transaction ID is specified, filter by decision.'),
-            RequestPayload::Field('createdAtMin', 'string', false, null, 'If not transaction ID is specified, filter time range.'),
-            RequestPayload::Field('createdAtMax', 'string', false, null, 'If not transaction ID is specified, filter time range.'),
-            RequestPayload::Field('docupass', 'string', false, null, 'If not transaction ID is specified, filter docupass reference.'),
+            self::Field('exportType', 'string', false, null, 'Export format, either "csv" or "json".'),
+            self::Field('ignoreUnrecognized', 'boolean', false, null, 'Ignore unrecognized documents.'),
+            self::Field('ignoreDuplicate', 'boolean', false, null, 'Ignore duplicated entries.'),
+            self::Field('transactionId', 'array of strings', false, null, 'List of transactions to export.'),
+            self::Field('customData', 'string', false, null, 'If not transaction ID is specified, filter by customData.'),
+            self::Field('profileId', 'string', false, null, 'If not transaction ID is specified, filter by profile ID.'),
+            self::Field('decision', 'string', false, null, 'If not transaction ID is specified, filter by decision.'),
+            self::Field('createdAtMin', 'string', false, null, 'If not transaction ID is specified, filter time range.'),
+            self::Field('createdAtMax', 'string', false, null, 'If not transaction ID is specified, filter time range.'),
+            self::Field('docupass', 'string', false, null, 'If not transaction ID is specified, filter docupass reference.'),
         ]);
     }
 }
