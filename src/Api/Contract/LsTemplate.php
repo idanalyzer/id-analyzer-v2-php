@@ -7,6 +7,10 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the List Contract Templates endpoint (`GET /contract`).
+ *
+ * Retrieves a paginated list of contract templates, optionally filtered.
+ *
  * @property int $limit
  * @property int $offset
  * @property int $order
@@ -17,6 +21,11 @@ class LsTemplate extends ApiBase
     public string $uri = "/contract";
     public string $method = "GET";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

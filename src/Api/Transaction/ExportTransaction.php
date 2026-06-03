@@ -7,6 +7,11 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the Export Transaction endpoint (`POST /export/transaction`).
+ *
+ * Exports one or more transactions as a CSV or JSON file, either by explicit
+ * transaction IDs or by filter criteria.
+ *
  * @property string $exportType
  * @property bool $ignoreUnrecognized
  * @property bool $ignoreDuplicate
@@ -24,6 +29,11 @@ class ExportTransaction extends ApiBase
     public string $method = "POST";
     public bool $isFile = true;
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

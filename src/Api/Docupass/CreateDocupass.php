@@ -7,6 +7,11 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the Create Docupass endpoint (`POST /docupass`).
+ *
+ * Creates a hosted Docupass identity-verification / e-signature session and
+ * returns a link the end user can open to complete verification.
+ *
  * @property string $profile
  * @property string $mode
  * @property string $verifyAddress
@@ -32,6 +37,11 @@ class CreateDocupass extends ApiBase
     public string $uri = "/docupass";
     public string $method = "POST";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

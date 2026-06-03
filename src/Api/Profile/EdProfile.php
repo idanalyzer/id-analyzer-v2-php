@@ -7,6 +7,10 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the Edit KYC Profile endpoint (`PUT /profile/{profileId}`).
+ *
+ * Updates the settings of an existing KYC profile identified by its profile ID.
+ *
  * @property string $name
  * @property mixed $canvasSize
  * @property bool $orientationCorrection
@@ -37,6 +41,11 @@ class EdProfile extends ApiBase
     public string $uri = "/profile/{profileId}";
     public string $method = "PUT";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

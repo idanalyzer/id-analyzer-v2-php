@@ -7,6 +7,10 @@ use IDAnalyzer2\RequestPayload;
 
 
 /**
+ * Request for the List Docupass endpoint (`GET /docupass`).
+ *
+ * Retrieves a paginated, filterable list of Docupass sessions.
+ *
  * @property string $sort
  * @property string $order
  * @property string $offset
@@ -24,6 +28,11 @@ class LsDocupass extends ApiBase {
     public string $uri = "/docupass";
     public string $method = "GET";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct() {
         $this->initFields([
             self::QueryParam("sort", "string", false, null, "Sort by id or completedat"),

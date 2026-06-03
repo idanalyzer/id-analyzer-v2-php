@@ -6,6 +6,11 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the AML v3 Search endpoint (`POST /amlv3`).
+ *
+ * Performs a full-text or ID-based search against the v3 AML database with
+ * pagination support.
+ *
  * @property string $text
  * @property string $id
  * @property int $limit
@@ -16,6 +21,11 @@ class AMLV3Search extends ApiBase
     public string $uri = "/amlv3";
     public string $method = "POST";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

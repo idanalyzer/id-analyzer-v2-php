@@ -7,6 +7,10 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the Export KYC Profile endpoint (`GET /export/profile/{profileId}`).
+ *
+ * Downloads the export file for a KYC profile identified by its profile ID.
+ *
  * @property string $profileId
  */
 class ExportProfile extends ApiBase
@@ -15,6 +19,11 @@ class ExportProfile extends ApiBase
     public string $method = "GET";
     public bool $isFile = true;
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

@@ -7,6 +7,11 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the Generate Contract endpoint (`POST /generate`).
+ *
+ * Generates a filled contract document from a template, optionally using data
+ * from a previous transaction.
+ *
  * @property string $templateId
  * @property string $format
  * @property string $transactionId
@@ -17,6 +22,11 @@ class GenerateContract extends ApiBase
     public string $uri = "/generate";
     public string $method = "POST";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

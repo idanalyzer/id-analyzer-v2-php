@@ -7,6 +7,11 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the Create KYC Profile endpoint (`POST /profile`).
+ *
+ * Creates a new KYC profile with default validation thresholds, decision rules
+ * and Docupass settings that can later be referenced when scanning documents.
+ *
  * @property string $name
  * @property mixed $canvasSize
  * @property bool $orientationCorrection
@@ -36,6 +41,11 @@ class CreateProfile extends ApiBase
     public string $uri = "/profile";
     public string $method = "POST";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

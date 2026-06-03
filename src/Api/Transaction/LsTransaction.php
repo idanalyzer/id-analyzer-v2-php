@@ -7,6 +7,10 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the List Transactions endpoint (`GET /transaction`).
+ *
+ * Retrieves a paginated, filterable list of scan/verification transactions.
+ *
  * @property int $limit
  * @property int $offset
  * @property int $order
@@ -22,6 +26,11 @@ class LsTransaction extends ApiBase
     public string $uri = "/transaction";
     public string $method = "GET";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([
