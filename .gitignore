@@ -3,3 +3,5 @@ phpDocumentor.phar
 generate_doc.bat
 composer.lock
 .idea
+# generated API-reference docs (not served; canonical reference is the KB)
+docs/
