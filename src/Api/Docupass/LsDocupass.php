@@ -6,6 +6,20 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 
 
+/**
+ * @property string $sort
+ * @property string $order
+ * @property string $offset
+ * @property string $limit
+ * @property string $reference
+ * @property string $customData
+ * @property string $profileId
+ * @property string $decision
+ * @property string $createdAtMin
+ * @property string $createdAtMax
+ * @property string $completedAtMin
+ * @property string $completedAtMax
+ */
 class LsDocupass extends ApiBase {
     public string $uri = "/docupass";
     public string $method = "GET";

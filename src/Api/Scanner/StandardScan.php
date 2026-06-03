@@ -7,6 +7,28 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 
+/**
+ * @property string $document
+ * @property string $documentBack
+ * @property string $face
+ * @property string $faceVideo
+ * @property string $profile
+ * @property array $profileOverride
+ * @property string $restrictCountry
+ * @property string $restrictState
+ * @property string $restrictType
+ * @property string $verifyName
+ * @property string $verifyDob
+ * @property string $verifyAge
+ * @property string $verifyAddress
+ * @property string $verifyPostcode
+ * @property string $verifyDocumentNumber
+ * @property string $contractGenerate
+ * @property string $contractFormat
+ * @property array $contractPrefill
+ * @property string $ip
+ * @property string $customData
+ */
 class StandardScan extends ApiBase
 {
     public string $uri = "/scan";

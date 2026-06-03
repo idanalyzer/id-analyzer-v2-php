@@ -6,6 +6,12 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property int $limit
+ * @property int $offset
+ * @property int $order
+ * @property string $templateid
+ */
 class LsTemplate extends ApiBase
 {
     public string $uri = "/contract";

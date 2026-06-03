@@ -6,6 +6,11 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 
 
+/**
+ * @property string $document
+ * @property string $documentBack
+ * @property bool $saveFile
+ */
 class QuickScan extends ApiBase {
     public string $uri = "/quickscan";
     public string $method = "POST";

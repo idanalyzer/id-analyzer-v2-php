@@ -5,6 +5,14 @@ namespace IDAnalyzer2\Api\Biometric;
 use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 
+/**
+ * @property string $reference
+ * @property string $face
+ * @property string $faceVideo
+ * @property string $profile
+ * @property string $profileOverride
+ * @property string $customData
+ */
 class FaceVerification extends ApiBase
 {
     public string $uri = "/face";

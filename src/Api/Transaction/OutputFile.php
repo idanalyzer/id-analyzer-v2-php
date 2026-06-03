@@ -5,6 +5,9 @@ namespace IDAnalyzer2\Api\Transaction;
 use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $fileName
+ */
 class OutputFile extends ApiBase
 {
     public string $uri = "/filevault/{fileName}";

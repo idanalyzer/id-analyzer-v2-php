@@ -5,6 +5,12 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $text
+ * @property string $id
+ * @property int $limit
+ * @property int $page
+ */
 class AMLV3Search extends ApiBase
 {
     public string $uri = "/amlv3";

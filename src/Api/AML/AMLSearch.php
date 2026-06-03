@@ -5,6 +5,13 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $name
+ * @property string $idNumber
+ * @property int $entity
+ * @property string $country
+ * @property array $database
+ */
 class AMLSearch extends ApiBase
 {
     public string $uri = "/aml";

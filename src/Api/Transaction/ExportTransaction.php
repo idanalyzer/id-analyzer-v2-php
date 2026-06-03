@@ -6,6 +6,18 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $exportType
+ * @property bool $ignoreUnrecognized
+ * @property bool $ignoreDuplicate
+ * @property array $transactionId
+ * @property string $customData
+ * @property string $profileId
+ * @property string $decision
+ * @property string $createdAtMin
+ * @property string $createdAtMax
+ * @property string $docupass
+ */
 class ExportTransaction extends ApiBase
 {
     public string $uri = "/export/transaction";
