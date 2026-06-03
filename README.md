@@ -17,8 +17,29 @@ composer require idanalyzer/id-analyzer-v2-php-sdk
 ## Api Document
 [ID Analyzer Document](https://id-analyzer-v2.readme.io/docs/php)
 
+## Base URL / Region
+The SDK targets the US fleet (`https://api2.idanalyzer.com`) by default. To use
+the EU fleet (`https://api2-eu.idanalyzer.com`), pass the zone to the client:
+
+```php
+$client = new IDAnalyzer2\Client("YOUR_API_KEY", "eu"); // "us" (default) or "eu"
+```
+
+## API Coverage
+The SDK exposes the full ID Analyzer API v2 surface:
+
+- **Scanner** — `StandardScan` (`/scan`), `QuickScan` (`/quickscan`), `VeryQuickScan` (`/veryquickscan`)
+- **Biometric** — `FaceVerification` (`/face`), `LivenessVerification` (`/liveness`)
+- **AML** — `AMLSearch` (`/aml`), `AMLV3Search` (`/amlv3`)
+- **Contract** — `GenerateContract` (`/generate`) + template CRUD (`/contract`)
+- **Transaction** — list/detail/update/delete (`/transaction`), export, image/file vault
+- **Docupass** — `CreateDocupass`, `LsDocupass`, `DocupassDetail` (`/docupass/{reference}`), `RmDocupass`
+- **Profile** — KYC profile CRUD + export (`/profile`)
+- **Webhook** — list/resend/delete (`/webhook`)
+- **Account** — `MyAccount` (`/myaccount`)
+
 ## Example
-Check out **/example** folder for more Python demos.
+Check out the **/example** folder for usage demos.
 
 ## SDK Reference
-Check out [ID Analyzer PHP Reference](https://idanalyzer.github.io/id-analyzer-nodejs/)
+Check out [ID Analyzer PHP Reference](https://idanalyzer.github.io/id-analyzer-v2-php/)
