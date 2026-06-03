@@ -40,65 +40,233 @@ Pass the zone as the second constructor argument — `"us"` (default, `https://a
 $client = new IDAnalyzer2\Client("YOUR_API_KEY", "eu");
 ```
 
-## Quick start
+## Usage
 
-The SDK uses a request object per endpoint: set its public properties, then call `$client->Do($request)`, which returns `[$result, $err]`.
+Every endpoint is a request class under `IDAnalyzer2\Api\…`. Set its public properties, then call `$client->Do($request)`, which returns a `[$result, $err]` tuple — `$result` is the decoded response object and `$err` is an `ApiError` (or `null`). Image/document inputs accept a base64 string, a file path/URL, or a `ref:` cache reference from a previous scan.
 
 ```php
 require_once __DIR__.'/vendor/autoload.php';
 
 use IDAnalyzer2\Client;
-use IDAnalyzer2\Api\Scanner\QuickScan;
+use IDAnalyzer2\Api\Scanner\StandardScan;
 
 $client = new Client("YOUR_API_KEY");
 
-$scan = new QuickScan();
+$scan = new StandardScan();
 $scan->document = base64_encode(file_get_contents('id_front.jpg'));
-$scan->saveFile = true;
+$scan->face     = base64_encode(file_get_contents('selfie.jpg'));   // optional biometric check
+$scan->profile  = "security_medium";   // a preset, or your KYC profile ID
 
 list($result, $err) = $client->Do($scan);
 if ($err !== null) {
     echo 'API error: '.$err->message;
 } else {
-    file_put_contents('result.json', json_encode($result));
+    echo $result->decision;   // accept / review / reject
 }
 ```
 
 ## Examples
 
+### Document scanning
+
+```php
+use IDAnalyzer2\Api\Scanner\QuickScan;       // fast OCR
+use IDAnalyzer2\Api\Scanner\VeryQuickScan;   // fastest OCR-only
+
+$qs = new QuickScan();
+$qs->document  = base64_encode(file_get_contents('id_front.jpg'));
+$qs->documentBack = base64_encode(file_get_contents('id_back.jpg')); // optional
+$qs->saveFile  = true;   // cache the image 24h and return a ref: hash
+list($result, $err) = $client->Do($qs);
+```
+
+### Biometric — face match & liveness
+
+```php
+use IDAnalyzer2\Api\Biometric\FaceVerification;
+use IDAnalyzer2\Api\Biometric\LivenessVerification;
+
+$face = new FaceVerification();
+$face->reference = base64_encode(file_get_contents('id_portrait.jpg'));
+$face->face      = base64_encode(file_get_contents('selfie.jpg'));
+$face->profile   = "security_medium";
+list($result, $err) = $client->Do($face);
+
+$live = new LivenessVerification();
+$live->face    = base64_encode(file_get_contents('selfie.jpg'));
+$live->profile = "security_medium";
+list($result, $err) = $client->Do($live);
+```
+
+### AML / PEP / sanctions screening
+
 ```php
 use IDAnalyzer2\Api\AML\AMLSearch;
 use IDAnalyzer2\Api\AML\AMLV3Search;
-use IDAnalyzer2\Api\Docupass\CreateDocupass;
 
-// AML / PEP / sanctions screening
 $aml = new AMLSearch();
-$aml->name = "John Smith";
+$aml->name    = "John Smith";
+$aml->country = "US";          // optional ISO-2 filter
 list($result, $err) = $client->Do($aml);          // POST /aml
 
-// DocuPass — hosted remote verification link
-$dp = new CreateDocupass();
-$dp->profile = "YOUR_PROFILE_ID";
-list($docupass, $err) = $client->Do($dp);
+$amlv3 = new AMLV3Search();
+$amlv3->text  = "John Smith";
+$amlv3->limit = 10;
+$amlv3->page  = 1;
+list($result, $err) = $client->Do($amlv3);        // POST /amlv3
 ```
 
-More demos in the [`/example`](example) folder.
+### Contracts — generate & manage templates
 
-## API coverage
+```php
+use IDAnalyzer2\Api\Contract\GenerateContract;
+use IDAnalyzer2\Api\Contract\CreateTemplate;
+use IDAnalyzer2\Api\Contract\LsTemplate;
+use IDAnalyzer2\Api\Contract\TemplateDetail;
+use IDAnalyzer2\Api\Contract\EdTemplate;
+use IDAnalyzer2\Api\Contract\RmTemplate;
 
-Request classes live under `IDAnalyzer2\Api\…` and cover the complete ID Analyzer API v2 surface:
+// Create a template
+$create = new CreateTemplate();
+$create->name        = "NDA";
+$create->content     = "<p>Signed by %{fullName}</p>";
+$create->orientation = "0";
+$create->font        = "Arial";
+$create->timezone    = "UTC";
+list($tpl, $err) = $client->Do($create);
+$templateId = $tpl->templateId;
 
-| Group | Classes |
-|---|---|
-| Scanner | `StandardScan` (`/scan`), `QuickScan`, `VeryQuickScan` |
-| Biometric | `FaceVerification`, `LivenessVerification` |
-| AML | `AMLSearch` (`/aml`), `AMLV3Search` (`/amlv3`) |
-| Contract | `GenerateContract` + template CRUD |
-| Transaction | list / detail / edit / delete / export + image & file vault |
-| Docupass | `CreateDocupass`, `LsDocupass`, `DocupassDetail`, `RmDocupass` |
-| Profile | KYC profile CRUD + export |
-| Webhook | `LsWebhook`, `ResendWebhook`, `RmWebhook` |
-| Account | `MyAccount` |
+// Generate a document from a template + data
+$gen = new GenerateContract();
+$gen->templateId = $templateId;
+$gen->format     = "PDF";
+$gen->fillData   = ["fullName" => "Mark"];
+list($doc, $err) = $client->Do($gen);
+
+// List / detail / edit / remove
+$client->Do(new LsTemplate());
+$detail = new TemplateDetail();  $detail->templateId = $templateId;  $client->Do($detail);
+$rm = new RmTemplate();          $rm->templateId = $templateId;      $client->Do($rm);
+```
+
+### Transactions — history, decisions, vault & export
+
+```php
+use IDAnalyzer2\Api\Transaction\LsTransaction;
+use IDAnalyzer2\Api\Transaction\TransactionDetail;
+use IDAnalyzer2\Api\Transaction\EdTransaction;
+use IDAnalyzer2\Api\Transaction\RmTransaction;
+use IDAnalyzer2\Api\Transaction\OutputImage;
+use IDAnalyzer2\Api\Transaction\OutputFile;
+use IDAnalyzer2\Api\Transaction\ExportTransaction;
+
+// List & fetch
+$client->Do(new LsTransaction());
+$detail = new TransactionDetail(); $detail->transactionId = "TX_ID"; $client->Do($detail);
+
+// Update decision / delete
+$ed = new EdTransaction(); $ed->transactionId = "TX_ID"; $ed->decision = "reject"; $client->Do($ed);
+$rm = new RmTransaction(); $rm->transactionId = "TX_ID"; $client->Do($rm);
+
+// Download a vault image / file (returns raw bytes)
+$oi = new OutputImage(); $oi->imageToken = "IMAGE_TOKEN";
+list($bytes, $err) = $client->Do($oi);
+file_put_contents("image.jpg", $bytes);
+
+$of = new OutputFile(); $of->fileName = "audit-report.pdf";
+list($bytes, $err) = $client->Do($of);
+file_put_contents($of->fileName, $bytes);
+
+// Export an archive (zip is base64 in the response)
+$et = new ExportTransaction();
+$et->exportType = "json";
+$et->createdAtMin = (string)(time() - 86400);
+$et->createdAtMax = (string)time();
+list($export, $err) = $client->Do($et);
+file_put_contents("export.zip", base64_decode($export->Base64));
+```
+
+### DocuPass — hosted remote verification & e-signature
+
+```php
+use IDAnalyzer2\Api\Docupass\CreateDocupass;
+use IDAnalyzer2\Api\Docupass\LsDocupass;
+use IDAnalyzer2\Api\Docupass\DocupassDetail;
+use IDAnalyzer2\Api\Docupass\RmDocupass;
+
+$create = new CreateDocupass();
+$create->profile = "security_medium";   // or your KYC profile ID
+$create->mode    = 0;                    // 0=Document+Face, 1=Document, 2=Face, 3=e-Signature
+list($docupass, $err) = $client->Do($create);
+// send the user to the returned verification URL / reference
+echo $docupass->reference;
+
+$client->Do(new LsDocupass());
+$d = new DocupassDetail(); $d->reference = $docupass->reference; $client->Do($d);
+$rm = new RmDocupass();    $rm->reference = $docupass->reference; $client->Do($rm);
+```
+
+### KYC profiles
+
+```php
+use IDAnalyzer2\Api\Profile\CreateProfile;
+use IDAnalyzer2\Api\Profile\LsProfile;
+use IDAnalyzer2\Api\Profile\ProfileDetail;
+use IDAnalyzer2\Api\Profile\EdProfile;
+use IDAnalyzer2\Api\Profile\RmProfile;
+use IDAnalyzer2\Api\Profile\ExportProfile;
+
+$create = new CreateProfile();           // optionally set name, thresholds, decisions, acceptedDocuments, webhook…
+list($profile, $err) = $client->Do($create);
+$profileId = $profile->id;
+
+$client->Do(new LsProfile());
+$d = new ProfileDetail(); $d->profileId = $profileId; $client->Do($d);
+$rm = new RmProfile();    $rm->profileId = $profileId; $client->Do($rm);
+
+$ex = new ExportProfile(); $ex->profileId = $profileId; $client->Do($ex);
+```
+
+### Webhooks & account
+
+```php
+use IDAnalyzer2\Api\Webhook\LsWebhook;
+use IDAnalyzer2\Api\Webhook\ResendWebhook;
+use IDAnalyzer2\Api\Webhook\RmWebhook;
+use IDAnalyzer2\Api\Account\MyAccount;
+
+$client->Do(new LsWebhook());
+$resend = new ResendWebhook(); $resend->webhookId = "WEBHOOK_ID"; $client->Do($resend);
+$rm = new RmWebhook();         $rm->webhookId = "WEBHOOK_ID";     $client->Do($rm);
+
+// Account quota & usage
+list($account, $err) = $client->Do(new MyAccount());
+```
+
+Runnable versions of every example are in the [`/example`](example) folder.
+
+## API reference
+
+| Group | Request classes (`IDAnalyzer2\Api\…`) | Endpoint |
+|---|---|---|
+| Scanner | `Scanner\StandardScan` | `POST /scan` |
+| | `Scanner\QuickScan` | `POST /quickscan` |
+| | `Scanner\VeryQuickScan` | `POST /veryquickscan` |
+| Biometric | `Biometric\FaceVerification` | `POST /face` |
+| | `Biometric\LivenessVerification` | `POST /liveness` |
+| AML | `AML\AMLSearch` | `POST /aml` |
+| | `AML\AMLV3Search` | `POST /amlv3` |
+| Contract | `Contract\GenerateContract` | `POST /generate` |
+| | `Contract\CreateTemplate` / `LsTemplate` / `TemplateDetail` / `EdTemplate` / `RmTemplate` | `/contract` |
+| Transaction | `Transaction\LsTransaction` / `TransactionDetail` / `EdTransaction` / `RmTransaction` | `/transaction` |
+| | `Transaction\ExportTransaction` | `POST /export/transaction` |
+| | `Transaction\OutputImage` / `OutputFile` | `/imagevault` · `/filevault` |
+| Docupass | `Docupass\CreateDocupass` / `LsDocupass` / `DocupassDetail` / `RmDocupass` | `/docupass` |
+| Profile | `Profile\CreateProfile` / `LsProfile` / `ProfileDetail` / `EdProfile` / `RmProfile` / `ExportProfile` | `/profile` |
+| Webhook | `Webhook\LsWebhook` / `ResendWebhook` / `RmWebhook` | `/webhook` |
+| Account | `Account\MyAccount` | `GET /myaccount` |
+
+Full parameter-level reference: **[developer.idanalyzer.com/help/php](https://developer.idanalyzer.com/help/php)**.
 
 ## Resources
 
