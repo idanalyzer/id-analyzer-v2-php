@@ -6,6 +6,11 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the AML Search endpoint (`POST /aml`).
+ *
+ * Screens a person or business against anti-money-laundering, sanctions and
+ * politically-exposed-person databases.
+ *
  * @property string $name
  * @property string $idNumber
  * @property int $entity
@@ -17,6 +22,11 @@ class AMLSearch extends ApiBase
     public string $uri = "/aml";
     public string $method = "POST";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

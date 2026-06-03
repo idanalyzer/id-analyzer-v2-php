@@ -6,6 +6,11 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 
 /**
+ * Request for the Face Verification endpoint (`POST /face`).
+ *
+ * Compares a selfie image or video against a reference image to confirm the
+ * person's identity.
+ *
  * @property string $reference
  * @property string $face
  * @property string $faceVideo
@@ -18,6 +23,11 @@ class FaceVerification extends ApiBase
     public string $uri = "/face";
     public string $method = "POST";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

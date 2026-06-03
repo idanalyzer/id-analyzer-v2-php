@@ -7,6 +7,10 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the Contract Template Detail endpoint (`GET /contract/{templateId}`).
+ *
+ * Retrieves the details of a single contract template by its template ID.
+ *
  * @property string $templateId
  */
 class TemplateDetail extends ApiBase
@@ -14,6 +18,11 @@ class TemplateDetail extends ApiBase
     public string $uri = "/contract/{templateId}";
     public string $method = "GET";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

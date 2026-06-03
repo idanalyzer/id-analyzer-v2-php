@@ -7,6 +7,11 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the Liveness Verification endpoint (`POST /liveness`).
+ *
+ * Determines whether a selfie image or video belongs to a live, present person
+ * rather than a spoof or replay.
+ *
  * @property string $face
  * @property string $faceVideo
  * @property string $profile
@@ -18,6 +23,11 @@ class LivenessVerification extends ApiBase
     public string $uri = "/liveness";
     public string $method = "POST";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

@@ -6,6 +6,11 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the Output File endpoint (`GET /filevault/{fileName}`).
+ *
+ * Downloads a generated output file (e.g. a contract or audit report) from the
+ * file vault by its file name.
+ *
  * @property string $fileName
  */
 class OutputFile extends ApiBase
@@ -15,6 +20,11 @@ class OutputFile extends ApiBase
     public bool $isFile = true;
 
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

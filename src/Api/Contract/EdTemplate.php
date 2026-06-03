@@ -8,6 +8,10 @@ use IDAnalyzer2\SDKException;
 
 
 /**
+ * Request for the Edit Contract Template endpoint (`POST /contract/{templateId}`).
+ *
+ * Updates an existing contract template identified by its template ID.
+ *
  * @property string $name
  * @property string $content
  * @property string $orientation
@@ -20,6 +24,11 @@ class EdTemplate extends ApiBase
     public string $uri = "/contract/{templateId}";
     public string $method = "POST";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

@@ -7,6 +7,10 @@ use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
 /**
+ * Request for the List Webhook Logs endpoint (`GET /webhook`).
+ *
+ * Retrieves a paginated, filterable list of webhook delivery log entries.
+ *
  * @property int $limit
  * @property int $offset
  * @property int $order
@@ -20,6 +24,11 @@ class LsWebhook extends ApiBase
     public string $uri = "/webhook";
     public string $method = "GET";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([

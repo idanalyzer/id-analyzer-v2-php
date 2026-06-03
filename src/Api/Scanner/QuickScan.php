@@ -7,6 +7,10 @@ use IDAnalyzer2\RequestPayload;
 
 
 /**
+ * Request for the Quick Scan endpoint (`POST /quickscan`).
+ *
+ * Performs a fast OCR-only scan of a document image without a full KYC pipeline.
+ *
  * @property string $document
  * @property string $documentBack
  * @property bool $saveFile
@@ -14,7 +18,12 @@ use IDAnalyzer2\RequestPayload;
 class QuickScan extends ApiBase {
     public string $uri = "/quickscan";
     public string $method = "POST";
-    
+
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct() {
         $this->initFields([
              self::Field("document", "string", true, null, "Base64-encoded Document Image"),

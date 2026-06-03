@@ -8,6 +8,11 @@ use IDAnalyzer2\SDKException;
 
 
 /**
+ * Request for the Standard Scan endpoint (`POST /scan`).
+ *
+ * Runs a full KYC scan of an identity document with optional biometric face
+ * verification, data verification and contract generation.
+ *
  * @property string $document
  * @property string $documentBack
  * @property string $face
@@ -34,6 +39,11 @@ class StandardScan extends ApiBase
     public string $uri = "/scan";
     public string $method = "POST";
 
+    /**
+     * Initialize the request fields with their descriptors and defaults.
+     *
+     * @return void
+     */
     function __construct()
     {
         $this->initFields([
@@ -66,6 +76,7 @@ class StandardScan extends ApiBase
      * @param string $format PDF, DOCX or HTML
      * @param array $extraFillData Array data in key-value pairs to autofill dynamic fields, data from user ID will be used first in case of a conflict. For example, passing {"myparameter":"abc"} would fill %{myparameter} in contract template with "abc".
      * @return void
+     * @throws SDKException If $extraFillData is not an array.
      */
     public function setContractOptions(string $templateId, string $format = "PDF", array $extraFillData = []) {
         if ($templateId !== "") {
