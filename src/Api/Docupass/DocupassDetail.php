@@ -6,6 +6,9 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 
 
+/**
+ * @property string $reference
+ */
 class DocupassDetail extends ApiBase {
     public string $uri = "/docupass/{reference}";
     public string $method = "GET";

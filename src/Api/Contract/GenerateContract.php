@@ -6,6 +6,12 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $templateId
+ * @property string $format
+ * @property string $transactionId
+ * @property array $fillData
+ */
 class GenerateContract extends ApiBase
 {
     public string $uri = "/generate";

@@ -5,6 +5,9 @@ namespace IDAnalyzer2\Api\Contract;
 use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $templateId
+ */
 class RmTemplate extends ApiBase
 {
     public string $uri = "/contract/{templateId}";

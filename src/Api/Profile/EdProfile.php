@@ -6,6 +6,32 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $name
+ * @property mixed $canvasSize
+ * @property bool $orientationCorrection
+ * @property bool $objectDetection
+ * @property bool $AAMVABarcodeParsing
+ * @property bool $saveResult
+ * @property bool $saveImage
+ * @property bool $outputImage
+ * @property string $outputType
+ * @property bool $crop
+ * @property bool $advancedCrop
+ * @property mixed $outputSize
+ * @property bool $inferFullName
+ * @property bool $splitFirstName
+ * @property bool $transactionAuditReport
+ * @property string $timezone
+ * @property array $obscure
+ * @property string $webhook
+ * @property array $thresholds
+ * @property array $decisionTrigger
+ * @property array $decisions
+ * @property array $docupass
+ * @property array $acceptedDocuments
+ * @property string $profileId
+ */
 class EdProfile extends ApiBase
 {
     public string $uri = "/profile/{profileId}";

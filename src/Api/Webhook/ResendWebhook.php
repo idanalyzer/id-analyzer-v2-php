@@ -5,6 +5,9 @@ namespace IDAnalyzer2\Api\Webhook;
 use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $webhookId
+ */
 class ResendWebhook extends ApiBase
 {
     public string $uri = "/webhook/{webhookId}";

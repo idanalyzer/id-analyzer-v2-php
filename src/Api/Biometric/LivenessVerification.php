@@ -6,6 +6,13 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $face
+ * @property string $faceVideo
+ * @property string $profile
+ * @property array $profileOverride
+ * @property string $customData
+ */
 class LivenessVerification extends ApiBase
 {
     public string $uri = "/liveness";

@@ -6,6 +6,17 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property int $limit
+ * @property int $offset
+ * @property int $order
+ * @property string $profileId
+ * @property string $decision
+ * @property string $customData
+ * @property string $createdAtMin
+ * @property string $createdAtMax
+ * @property string $docupass
+ */
 class LsTransaction extends ApiBase
 {
     public string $uri = "/transaction";

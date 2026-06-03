@@ -5,6 +5,10 @@ namespace IDAnalyzer2\Api\Transaction;
 use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $decision
+ * @property string $transactionId
+ */
 class EdTransaction extends ApiBase
 {
     public string $uri = "/transaction/{transactionId}";

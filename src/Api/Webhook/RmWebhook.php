@@ -6,6 +6,9 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $webhookId
+ */
 class RmWebhook extends ApiBase
 {
     public string $uri = "/webhook/{webhookId}";

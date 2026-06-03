@@ -6,6 +6,13 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $name
+ * @property string $content
+ * @property string $orientation
+ * @property string $font
+ * @property string $timezone
+ */
 class CreateTemplate extends ApiBase
 {
     public string $uri = "/contract";

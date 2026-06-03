@@ -6,6 +6,27 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property string $profile
+ * @property string $mode
+ * @property string $verifyAddress
+ * @property string $verifyDocumentNumber
+ * @property string $verifyAge
+ * @property string $verifyName
+ * @property string $verifyDOB
+ * @property string $verifyPostcode
+ * @property string $userPhone
+ * @property string $customData
+ * @property string $language
+ * @property bool $reusable
+ * @property string $referenceDocument
+ * @property string $referenceDocumentBack
+ * @property string $referenceFace
+ * @property string $contractGenerate
+ * @property string $contractSign
+ * @property string $contractFormat
+ * @property array $contractPrefill
+ */
 class CreateDocupass extends ApiBase
 {
     public string $uri = "/docupass";

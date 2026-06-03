@@ -6,6 +6,15 @@ use IDAnalyzer2\ApiBase;
 use IDAnalyzer2\RequestPayload;
 use IDAnalyzer2\SDKException;
 
+/**
+ * @property int $limit
+ * @property int $offset
+ * @property int $order
+ * @property string $event
+ * @property int $success
+ * @property string $createdAtMin
+ * @property string $createdAtMax
+ */
 class LsWebhook extends ApiBase
 {
     public string $uri = "/webhook";
