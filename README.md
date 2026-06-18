@@ -117,6 +117,26 @@ $amlv3->page  = 1;
 list($result, $err) = $client->Do($amlv3);        // POST /amlv3
 ```
 
+### KYB — business verification
+
+Verify a business from its registration/incorporation document: extract details, check official company registries, screen against sanctions/PEP, and return directors/owners to verify. Supply a document and/or known business identifiers (at least one of document, legalName or registrationNumber).
+
+```php
+use IDAnalyzer2\Api\KYB\KYBVerify;
+
+// From a registration/incorporation document
+$kyb = new KYBVerify();
+$kyb->document = base64_encode(file_get_contents('./registration.jpg'));
+list($result, $err) = $client->Do($kyb);          // POST /kyb
+
+// Or from known business details
+$kyb = new KYBVerify();
+$kyb->legalName          = "ACME CORPORATION";
+$kyb->registrationNumber = "12345678";
+$kyb->countryIso2        = "US";                  // ISO-2 country of registration
+list($result, $err) = $client->Do($kyb);          // POST /kyb
+```
+
 ### Contracts — generate & manage templates
 
 ```php
@@ -257,6 +277,7 @@ Runnable versions of every example are in the [`/example`](example) folder.
 | | `Biometric\LivenessVerification` | `POST /liveness` |
 | AML | `AML\AMLSearch` | `POST /aml` |
 | | `AML\AMLV3Search` | `POST /amlv3` |
+| KYB | `KYB\KYBVerify` | `POST /kyb` |
 | Contract | `Contract\GenerateContract` | `POST /generate` |
 | | `Contract\CreateTemplate` / `LsTemplate` / `TemplateDetail` / `EdTemplate` / `RmTemplate` | `/contract` |
 | Transaction | `Transaction\LsTransaction` / `TransactionDetail` / `EdTransaction` / `RmTransaction` | `/transaction` |
