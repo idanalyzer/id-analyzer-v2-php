@@ -10,14 +10,13 @@ try {
 
     // Verify a business from its registration/incorporation document: extract
     // details, check official company registries, screen against sanctions/PEP,
-    // and return directors/owners to verify.
+    // and return directors/owners to verify. A document is required; an optional
+    // profile selects the KYC profile.
     $kyb = new KYBVerify();
     $kyb->document = base64_encode(file_get_contents('./registration.jpg'));
 
-    // Or verify from known business details:
-    // $kyb->legalName          = "ACME CORPORATION";
-    // $kyb->registrationNumber = "12345678";
-    // $kyb->countryIso2        = "US";
+    // Optionally apply a KYC profile:
+    // $kyb->profile = "your-profile-id";
 
     [$result, $err] = $client->Do($kyb);
     if ($err != null) {
